@@ -1,0 +1,291 @@
+.sender-page {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 40px 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.sender-page::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 70% 0%, rgba(124, 92, 252, 0.1), transparent 60%),
+    radial-gradient(ellipse 60% 50% at 30% 100%, rgba(99, 102, 241, 0.06), transparent 50%),
+    var(--bg-primary);
+  z-index: 0;
+}
+
+.sender-container {
+  position: relative;
+  z-index: 1;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: 36px;
+  max-width: 580px;
+  width: 100%;
+  box-shadow: var(--shadow-lg);
+}
+
+/* Back button */
+.sender-page .back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  font-size: 0.9rem;
+  cursor: pointer;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+  font-weight: 500;
+  transition: color var(--transition-fast);
+  padding: 0;
+}
+
+.sender-page .back-btn:hover {
+  color: var(--accent-hover);
+}
+
+/* Page header */
+.sender-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.sender-header-icon {
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: 12px;
+  filter: drop-shadow(0 0 16px var(--accent-glow));
+}
+
+.sender-header h1 {
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+.sender-header p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+/* Upload section */
+.upload-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.upload-area {
+  position: relative;
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius-lg);
+  padding: 40px 24px;
+  text-align: center;
+  background: var(--bg-secondary);
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.upload-area:hover {
+  border-color: var(--accent);
+  background: var(--accent-subtle);
+}
+
+.upload-area.has-file {
+  border-color: var(--success);
+  border-style: solid;
+  background: rgba(52, 211, 153, 0.05);
+}
+
+.file-input {
+  display: none;
+}
+
+.file-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.upload-icon-svg {
+  color: var(--text-muted);
+  opacity: 0.6;
+  transition: all var(--transition-base);
+}
+
+.upload-area:hover .upload-icon-svg {
+  color: var(--accent);
+  opacity: 1;
+}
+
+.upload-area.has-file .upload-icon-svg {
+  color: var(--success);
+  opacity: 1;
+}
+
+.upload-text {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  word-break: break-word;
+}
+
+.upload-hint {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+/* File info */
+.file-info {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.file-detail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.file-detail-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.file-detail-value {
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+/* Buttons */
+.sender-page .btn {
+  padding: 12px 24px;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  line-height: 1.4;
+  width: 100%;
+}
+
+.sender-page .btn-primary {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 4px 16px var(--accent-glow);
+}
+
+.sender-page .btn-primary:hover:not(:disabled) {
+  background: var(--accent-hover);
+  box-shadow: 0 6px 24px var(--accent-glow);
+  transform: translateY(-1px);
+}
+
+.sender-page .btn-primary:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Spinner */
+.sender-page .spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* QR section */
+.qr-section {
+  margin-top: 24px;
+  padding: 24px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  text-align: center;
+  animation: slideUp 0.35s ease-out;
+}
+
+.qr-section h2 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.qr-code-display {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 40px;
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 220px;
+}
+
+.qr-placeholder-text {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+}
+
+.qr-filename {
+  font-weight: 600;
+  color: var(--accent);
+  word-break: break-word;
+  font-size: 0.95rem;
+}
+
+.qr-note {
+  color: var(--text-secondary);
+  font-weight: 500;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 520px) {
+  .sender-container {
+    padding: 24px 18px;
+  }
+  .sender-header h1 {
+    font-size: 1.5rem;
+  }
+  .upload-area {
+    padding: 30px 16px;
+  }
+}
